@@ -1,0 +1,18 @@
+{
+  "name": "ether-mesh-service",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+      "bip39": "2.2.0",
+      "bitcoinjs-lib": "2.3.0",
+      "ethers-wallet": "1.0.8",
+      "ip-address": "5.8.6",
+      "qr-image": "3.1.0"
+  },
+  "author": "Richard Moore <me@ricmoo.com>",
+  "license": "MIT"
+}

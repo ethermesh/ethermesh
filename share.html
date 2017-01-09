@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <div class="content">
+            <div class="spacer-top" target="index.html">&lt;&nbsp;</div>
+            <div class="heading">Sync your device with your wallet</div>
+            <div class="hr"></div>
+            <div class="block">
+                <span class="circle">1</span>
+                <b>In your wallet, find the "pair device" button (usually found in "Tools")</b>
+            </div>
+            <div class="hr"></div>
+            <div class="block">
+                <span class="circle">2</span>
+                <b>Enter private key passcode:</b>
+                <div class="clearfix"></div>
+                <div id="words"></div>
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript">
+            var divWords = document.getElementById('words');
+            function populateMnemonic(mnemonic) {
+                var words = mnemonic.split(' ');
+                function addWord(word) {
+                    var div = document.createElement('div');
+                    div.textContent = word;
+                    divWords.appendChild(div);
+                }
+                
+                for (var i = 0; i < words.length / 2; i++) {
+                    addWord((i + 1) + '. ' + words[i]);
+                    addWord((i + 7) + '. ' + words[i + 6]);
+                }
+            }
+
+            /*
+            fetchUrl('http://localhost:1490/mnemonic').then(function(result) {
+                populateMnemonic(result);
+            }, function(error) {
+                console.log(error);
+            });
+            */
+            populateMnemonic("hello world one two three forum hive insects nice ten eleven twelve");
+        </script>
+    </body>
+</html>

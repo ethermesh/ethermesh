@@ -1,0 +1,183 @@
+hml {
+    margin: 0;
+}
+
+body {
+    background: #00a8a6;
+    color: #fff;
+    font-family: sans-serif;
+    margin: 0;
+    overflow: hidden;
+}
+
+.content {
+    ddd-border: 1px solid blue;
+    height: 460px;
+    display: block;
+    padding: 10px;
+    position: absolute;
+    width: 300px;
+    -webkit-transform: translate(80px, -80px) rotate(270deg);
+}
+
+.spacer-top {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 44px;
+}
+
+.logo {
+   padding: 0 0 15px 20px;
+}
+
+.heading {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0 25px 0;
+}
+
+.centered {
+    text-align: center;
+}
+
+a.button {
+    border: 3px solid #555;
+    color: #fff;
+    display: inline-block;
+    font-weight: bold;
+    margin: 10px 0 25px;
+    padding: 15px 0;
+    text-decoration: none;
+    width: 200px;
+    text-align: center;
+}
+
+a.button span {
+    font-size: 0.6em;
+    opacity: 0.8;
+}
+
+a.back {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+.circle {
+    background-color: #fff;
+    border-radius: 18px;
+    float: left;
+    font-weight: bold;
+    font-size: 20px;
+    height: 36px;
+    line-height: 36px;
+    margin: 0 20px 20px 20px;
+    opacity: 0.7;
+    text-align: center;
+    width: 36px;
+    color: #00a8a6;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.hr {
+    clear: both;
+    margin: 0px 20px;
+    border-top: 2px solid #fff;
+    height: 0px;
+    overflow: hidden;
+}
+
+.hr-thick{
+    border-top: 4px solid #fff;
+    clear: both;
+    margin: 25px 20px;
+    height: 0px;
+    overflow: hidden;
+}
+
+.templates {
+    display: none;
+}
+
+.block {
+    padding: 20px 0;
+}
+
+#words {
+    margin-left: 74px;
+}
+
+#words > div {
+    color: #000;
+    float: left;
+    line-height: 20px;
+    dtext-align: center;
+    width: 50%;;
+}
+
+.providers > div.provider {
+    cursor: pointer;
+    padding: 20px 0;
+}
+
+.providers .name {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.providers .info {
+    color: #000;
+    font-size: 0.8em;
+}
+
+th {
+    text-align: left;
+}
+
+td {
+    text-align: left;
+}
+
+table {
+    margin: 0 25px;
+}
+
+.remaining {
+    padding-top: 40px;
+}
+
+.remaining div {
+    background-color: #b5e0d9;
+    border-radius: 5px;
+    color: #000;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold
+    height: 40px;;
+    line-height: 40px;
+    width: 100px;
+}
+
+.icon-wifi {
+    background: url(images/wifi.png) center no-repeat;
+    background-size: contain;
+    height: 60px;
+    left: 20px;
+    position: absolute;
+    width: 40px;
+}
+
+.icon-next {
+    background: url(images/next.png) center no-repeat;
+    background-size: contain;
+    height: 60px;
+    position: absolute;
+    right: 20px;
+    width: 40px;
+}

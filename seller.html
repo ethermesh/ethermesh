@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <style type="text/css">
+            html {
+                margin: 0;
+            }
+            body {
+                margin: 0;
+                overflow: hidden;
+            }
+            .content {
+                height: 460px;
+                display: block;
+                padding: 10px;
+                position: absolute;
+                dddleft: 220px;
+                dddtop: 150px;
+                width: 320px;
+                -webkit-transform: translate(70px, -90px) rotate(270deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            Hello World
+            <div id="mnemonic"></div>
+        </div>
+        <script type="text/javascript">
+            function fetchUrl(url) {
+                return new Promise(function(resolve, reject) {
+                    var request = new XMLHttpRequest();
+                    request.open('GET', url, true);
+            
+                    request.onload = function() {
+                        if (request.status >= 200 && request.status < 400) {
+                            var data = request.responseText;
+                            try {
+                                data = JSON.parse(data);
+                            } catch (error) {
+                                reject(error);
+                                return;
+                            }
+                            
+                            if (data.status === 'OK') {
+                                resolve(data.result);
+                            } else {
+                                reject(new Error(data.message));
+                            }
+                        } else {
+                            reject(new Error('server error - ' + request.status))
+                        }
+                    };
+
+                    request.onerror = function() {
+                        reject(new Error('connection error'));
+                    };
+
+                    request.send();
+                });
+            }
+
+            fetchUrl('http://localhost:1490/mnemonic').then(function(result) {
+                document.getElementById('mnemonic').textContent = result;
+            }, function(error) {
+                console.log(error);
+            });
+        </script>
+    </body>
+</html>

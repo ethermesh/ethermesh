@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <div class="templates">
+            <div class="provider">
+                <div class="icon-wifi"></div>
+                <div class="icon-next"></div>
+                <div class="centered name"></div>
+                <div class="centered info">price $0.75 / day<br />data cap: unlimited</div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="spacer-top" target="index.html">&lt;&nbsp;</div>
+            <div class="heading">Choose your provider</div>
+            <div class="hr"></div>
+            <div class="providers" id="providers"></div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript">
+            var divProviders = document.getElementById('providers');
+            var templateProvider = document.body.querySelector('.templates > .provider');
+            fetchUrl('http://127.0.0.1:1490/peers').then(function(peers) {
+                peers.forEach(function(peerAddress) {
+                    var div = templateProvider.cloneNode(true);
+                    div.querySelector('.name').textContent = getNetworkName(peerAddress);
+                    div.onclick = function() {
+                        location.href = 'show.html#' + peerAddress;
+                    };
+                    divProviders.appendChild(div);
+
+                    var hr = document.createElement('div');
+                    hr.classList.add('hr');
+                    divProviders.appendChild(hr);
+                });
+            }, function(error) {
+                alert(error);
+            });
+        </script>
+    </body>
+</html>

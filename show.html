@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <div class="content">
+            <div class="spacer-top" target="connect.html">&lt;&nbsp;</div>
+            <div class="heading" id="name"></div>
+            <div class="hr-thick"></div>
+            <div class="centered">
+                price: $0.75 / 24 hours<br />
+                data cap: unlimited
+            </div>
+            <div class="hr-thick"></div>
+            <div class="centered" id="qrcode"><img id="qrcode-image" /></div>
+            <div class="centered" id="login">
+                 <table><tr>
+                     <th align="left">SSID:</th>
+                     <td align="left" id="ssid"></td>
+                 </tr><tr>
+                     <th align="left">Password:</th>
+                     <td align="left" id="password"></td>
+                 </tr></table>
+                 <div class="remaining"><div><span id="remaining"></span></div></div>
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript">
+            var divQrcode = document.getElementById('qrcode');
+            divQrcode.style.display = 'none';
+
+            var divLogin = document.getElementById('login');
+            divLogin.style.display = 'none';
+            
+            var peerAddress = location.hash.substring(1);
+            document.getElementById('name').textContent = getNetworkName(peerAddress);
+
+            function update() {
+                fetchUrl('http://[' + peerAddress + ']:1490/status').then(function(result) {
+                    if (result.password) {
+                        document.getElementById('ssid').textContent = result.ssid;
+                        document.getElementById('password').textContent = result.password;
+                        
+                        var seconds = result.expires - ((new Date()).getTime() / 1000);
+                        var minutes = seconds / 60;
+                        var hours = parseInt(minutes / 60);
+                        minutes = String(parseInt(minutes - hours * 60));
+                        if (minutes.length === 1) { minutes = '0' + minutes; }
+
+                        document.getElementById('remaining').textContent = hours + ':' + minutes;
+
+                        divLogin.style.display = 'block';
+                        divQrcode.style.display = 'none';
+                    } else {
+                        document.getElementById('qrcode-image').src = result.qrcode;
+                        divQrcode.style.display = 'block';
+                        divLogin.style.display = 'none';
+                    }
+                    setTimeout(update, 1000);
+                }, function(error) {
+                    alert(error);
+                    setTimeout(update, 1000);
+                });
+            }
+            update();
+        </script>
+    </body>
+</html>
